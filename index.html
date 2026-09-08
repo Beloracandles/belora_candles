@@ -57,11 +57,10 @@ const products=[
  {id:'flower',name:'Flower Candle',price:80,pack:'2 pieces',img:'flower'},
  {id:'baby-flower',name:'Baby Flower Candle',price:80,pack:'2 pieces',img:'baby-flower'},
  {id:'rasmalai',name:'Rasmalai Candle',price:120,pack:'2 pieces',img:'rasmalai'},
- {id:'green-tealight',name:'Green Tealight Candle Set',price:100,pack:'5 pieces',img:'green-tealight'},
- {id:'assorted-mithai',name:'Assorted Mithai Candle Box',price:100,pack:'4 pieces',img:'assorted-mithai'}
+ {id:'green-tealight',name:'Green Tealight Candle Set',price:100,pack:'4 pieces',img:'green-tealight'}
 ];
 let cart=JSON.parse(localStorage.getItem('beloraCart')||'{}');
-function imgTag(p){return `<img data-base="images/${p.img}" alt="${p.name}" loading="lazy"><div class="missing">Photo not found.<br>Keep the image inside the <b>images</b> folder.</div>`}
+function imgTag(p){return `<img data-base="${p.img}" alt="${p.name}" loading="lazy"><div class="missing">Photo not found.<br>Please check that the image file is uploaded to GitHub.</div>`}
 function loadImage(img){const exts=['.jpeg','.jpg','.png','.webp'];let i=0;const go=()=>{if(i>=exts.length){img.style.display='none';img.nextElementSibling.style.display='flex';return}img.src=img.dataset.base+exts[i++];};img.onerror=go;go();}
 function render(){document.getElementById('grid').innerHTML=products.map(p=>`<article class="card"><div class="photo">${imgTag(p)}</div><div class="info"><h3 class="name">${p.name}</h3><p class="pack">${p.pack}</p><p class="price">₹${p.price}</p><button class="add" onclick="add('${p.id}')">Add to cart</button></div></article>`).join('');document.querySelectorAll('img[data-base]').forEach(loadImage);updateCartBtn();}
 function add(id){cart[id]=(cart[id]||0)+1;save();updateCartBtn();}
