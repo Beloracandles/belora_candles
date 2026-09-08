@@ -59,27 +59,27 @@ footer{text-align:center;color:#8a7c72;padding:24px 0 60px;font-size:14px}
 <div class="order"><button class="wa" id="wa">Order on WhatsApp</button><button class="upi" id="upi">Pay by UPI</button><button class="copy" id="copy">Copy order details</button></div></div></div>
 <script>
 const products=[
- {id:'coconut-spice',name:'Coconut Spice Candle',price:120,pack:'2 pieces',img:'coconut-spice'},
- {id:'matka',name:'Matka Candle',price:160,pack:'4 pieces',img:'matka'},
- {id:'moon-face',name:'Moon Face Candle',price:60,pack:'2 pieces',img:'moon-face'},
- {id:'teddy-bear',name:'Teddy Bear Candle',price:50,pack:'1 piece',img:'teddy-bear'},
- {id:'ocean',name:'Ocean Candle',price:150,pack:'1 piece',img:'ocean'},
- {id:'bubble-stack',name:'Bubble Stack Candle',price:30,pack:'1 piece',img:'bubble-stack'},
- {id:'buddha',name:'Buddha Candle',price:80,pack:'2 pieces',img:'buddha'},
- {id:'rose-bouquet',name:'Rose Bouquet Candle',price:120,pack:'2 pieces',img:'rose-bouquet'},
- {id:'lady-bust',name:'Lady Bust Candle',price:120,pack:'2 pieces',img:'lady-bust'},
- {id:'om',name:'Om Candle',price:80,pack:'2 pieces',img:'om'},
- {id:'festive-modak',name:'Festive Modak Candle Box',price:80,pack:'4 pieces (2 white + 2 orange)',img:'festive-modak'},
- {id:'green-diya',name:'Green Diya Candle Set',price:80,pack:'3 pieces',img:'green-diya'},
-    {id:'tribal-matka',name:'Tribal Matka Candle',price:120,pack:'4 pieces',img:'tribal-matka'},
+ {id:'coconut-spice',name:'Coconut Spice Candle',price:190,pack:'2 pieces',img:'coconut-spice'},
+ {id:'matka',name:'Matka Candle',price:170,pack:'4 pieces',img:'matka'},
+ {id:'moon-face',name:'Moon Face Candle',price:140,pack:'2 pieces',img:'moon-face'},
+ {id:'teddy-bear',name:'Teddy Bear Candle',price:200,pack:'2 pieces',img:'teddy-bear'},
+ {id:'ocean',name:'Ocean Candle',price:500,pack:'1 piece',img:'ocean'},
+ {id:'bubble-stack',name:'Bubble Stack Candle',price:100,pack:'2 pieces',img:'bubble-stack'},
+ {id:'buddha',name:'Buddha Candle',price:120,pack:'2 pieces',img:'buddha'},
+ {id:'rose-bouquet',name:'Rose Bouquet Candle',price:80,pack:'1 piece',img:'rose-bouquet'},
+ {id:'lady-bust',name:'Lady Bust Candle',price:199,pack:'2 pieces',img:'lady-bust'},
+ {id:'om',name:'Om Candle',price:140,pack:'2 pieces',img:'om'},
+ {id:'festive-modak',name:'Festive Modak Candle Box',price:104,pack:'4 pieces',img:'festive-modak'},
+ {id:'green-diya',name:'Green Diya Candle Set',price:80,pack:'2 pieces',img:'green-diya'},
+    {id:'tribal-matka',name:'Tribal Matka Candle',price:170,pack:'4 pieces',img:'tribal-matka'},
     {id:'blue-flower',name:'Blue Flower Candle',price:80,pack:'2 pieces',img:'blue-flower'},
     {id:'festive-gift-box',name:'Assorted Festive Candle Gift Box',price:100,pack:'1 box',img:'festive-gift-box'},
- {id:'yellow-diya',name:'Yellow Diya Candle Set',price:80,pack:'3 pieces',img:'yellow-diya'},
- {id:'evil-eye',name:'Evil Eye Candle',price:120,pack:'2 pieces',img:'evil-eye'},
- {id:'flower',name:'Flower Candle',price:80,pack:'2 pieces',img:'flower'},
- {id:'baby-flower',name:'Baby Flower Candle',price:80,pack:'2 pieces',img:'baby-flower'},
- {id:'rasmalai',name:'Rasmalai Candle',price:120,pack:'2 pieces',img:'rasmalai'},
- {id:'green-tealight',name:'Green Tealight Candle Set',price:100,pack:'4 pieces',img:'green-tealight'}
+ {id:'yellow-diya',name:'Yellow Diya Candle Set',price:80,pack:'2 pieces',img:'yellow-diya'},
+ {id:'evil-eye',name:'Evil Eye Candle',price:200,pack:'2 pieces',img:'evil-eye'},
+ {id:'flower',name:'Flower Candle',price:120,pack:'4 pieces',img:'flower'},
+ {id:'baby-flower',name:'Baby Flower Candle',price:160,pack:'2 pieces',img:'baby-flower'},
+ {id:'rasmalai',name:'Rasmalai Candle',price:250,pack:'2 pieces',img:'rasmalai'},
+ {id:'green-tealight',name:'Green Tealight Candle Set',price:150,pack:'8 pieces',img:'green-tealight'}
 ];
 let cart=JSON.parse(localStorage.getItem('beloraCart')||'{}');
 function imgTag(p){return `<img data-base="${p.img}" alt="${p.name}" loading="lazy"><div class="missing">Photo not found.<br>Please check that the image file is uploaded to GitHub.</div>`}
