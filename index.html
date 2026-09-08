@@ -13,7 +13,7 @@
 footer{text-align:center;color:#8a7c72;padding:24px 0 60px;font-size:14px}
 @media(min-width:720px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.card{border-radius:24px}.hero{padding-top:60px}}
 
-.customer-details{margin:8px 0 4px;padding:16px;background:#fbf6ee;border:1px solid #eee2d7;border-radius:16px}
+.delivery-summary{padding:10px 0;font-size:16px}.delivery-summary b{font-weight:800}.customer-details{margin:8px 0 4px;padding:16px;background:#fbf6ee;border:1px solid #eee2d7;border-radius:16px}
 .customer-details h4{font:700 21px Georgia,serif;margin:0 0 12px}
 .customer-details input,.customer-details textarea{width:100%;border:1px solid #dac8b8;border-radius:11px;padding:12px;margin:0 0 9px;font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#fff;color:#35231c}
 .customer-details textarea{min-height:78px;resize:vertical}
@@ -55,6 +55,7 @@ footer{text-align:center;color:#8a7c72;padding:24px 0 60px;font-size:14px}
     <input id="custCity" type="text" placeholder="City" autocomplete="address-level2">
     <input id="custPincode" type="text" placeholder="Pincode" inputmode="numeric" autocomplete="postal-code">
   </div>
+  <div class="delivery-summary" id="deliverySummary">Delivery charge will be calculated from your city.</div>
 </div>
 <div class="order"><button class="wa" id="wa">Order on WhatsApp</button><button class="upi" id="upi">Pay by UPI</button><button class="copy" id="copy">Copy order details</button></div></div></div>
 <script>
@@ -89,6 +90,26 @@ function add(id){cart[id]=(cart[id]||0)+1;save();updateCartBtn();}
 function save(){localStorage.setItem('beloraCart',JSON.stringify(cart))}
 function updateCartBtn(){document.getElementById('cartBtn').textContent=`🛒 Cart (${Object.values(cart).reduce((a,b)=>a+b,0)})`}
 function change(id,d){cart[id]=(cart[id]||0)+d;if(cart[id]<=0)delete cart[id];save();showCart();updateCartBtn();}
+function deliveryCharge(){
+  const city=(document.getElementById('custCity')?.value||'').trim().toLowerCase();
+  if(!city)return 0;
+  if(city.includes('bangalore')||city.includes('bengaluru'))return 50;
+  if(city.includes('mysore')||city.includes('mysuru'))return 80;
+  return 100;
+}
+function deliveryLabel(){
+  const city=(document.getElementById('custCity')?.value||'').trim().toLowerCase();
+  if(!city)return 'Enter city to calculate delivery';
+  if(city.includes('bangalore')||city.includes('bengaluru'))return 'Bangalore delivery';
+  if(city.includes('mysore')||city.includes('mysuru'))return 'Mysore delivery';
+  return 'Other Karnataka delivery';
+}
+function updateDeliverySummary(){
+  const el=document.getElementById('deliverySummary');
+  if(!el)return;
+  const city=(document.getElementById('custCity')?.value||'').trim();
+  el.innerHTML=city?`${deliveryLabel()}: <b>₹${deliveryCharge()}</b>`:'Delivery charge will be calculated from your city.';
+}
 function orderText(){
   const name=document.getElementById('custName').value.trim();
   const phone=document.getElementById('custPhone').value.trim();
@@ -96,20 +117,21 @@ function orderText(){
   const city=document.getElementById('custCity').value.trim();
   const pincode=document.getElementById('custPincode').value.trim();
   let lines=['Hi Belora Candles! 🕯️','I would like to place an order.',''];
-  let total=0;
+  let subtotal=0;
   for(const p of products){
     const q=cart[p.id]||0;
     if(q){
       lines.push(`${p.name} — ${p.pack}`);
       lines.push(`Quantity: ${q}`);
       lines.push(`Subtotal: ₹${p.price*q}`,'');
-      total+=p.price*q;
+      subtotal+=p.price*q;
     }
   }
-  lines.push(`Total: ₹${total}`,'','Customer Details:',`Name: ${name}`,`Phone: ${phone}`,`Delivery Address: ${address}`,`City: ${city}`,`Pincode: ${pincode}`,'','Please confirm availability and delivery details.');
+  const delivery=deliveryCharge();
+  const grandTotal=subtotal+delivery;
+  lines.push(`Product Total: ₹${subtotal}`,`Delivery Charge: ₹${delivery}`,`Grand Total: ₹${grandTotal}`,'','Customer Details:',`Name: ${name}`,`Phone: ${phone}`,`Delivery Address: ${address}`,`City: ${city}`,`Pincode: ${pincode}`,'','Please confirm availability and delivery details.');
   return lines.join('\n');
 }
-
 function cartTotal(){
   let total=0;
   for(const p of products){
@@ -139,12 +161,13 @@ document.getElementById('wa').onclick=()=>{
 
 document.getElementById('upi').onclick=()=>{
   if(!Object.keys(cart).length)return alert('Please add a product first.');
-  const total=cartTotal();
+  const total=cartTotal()+deliveryCharge();
   const upiUrl=`upi://pay?pa=apeksha99975@ybl&pn=${encodeURIComponent('Belora Candles')}&am=${total}&cu=INR&tn=${encodeURIComponent('Belora Candles Order')}`;
   location.href=upiUrl;
 };
 
 document.getElementById('copy').onclick=async()=>{if(!Object.keys(cart).length)return alert('Please add a product first.');try{await navigator.clipboard.writeText(orderText());alert('Order details copied.')}catch{alert(orderText())}};
+document.getElementById('custCity').addEventListener('input',updateDeliverySummary);
 render();
 </script>
 </body>
