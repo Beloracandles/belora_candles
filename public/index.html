@@ -1,2584 +1,415 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#6b4b3e" />
-
-  <title>Belora Candles | Handcrafted Candles for a Brighter You</title>
-
-  <meta
-    name="description"
-    content="Belora handcrafted candles — beautiful candles made with love for your home, celebrations and gifting."
-  />
-
-  <style>
-    :root {
-      --cream: #fbf7f1;
-      --cream2: #f3eadf;
-      --brown: #6b4b3e;
-      --dark: #352820;
-      --gold: #b28a55;
-      --pink: #ead5cf;
-      --white: #ffffff;
-      --muted: #756b65;
-      --border: #e5d9cd;
-      --shadow: 0 12px 35px rgba(70, 45, 30, 0.10);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--dark);
-      line-height: 1.6;
-    }
-
-    h1,
-    h2,
-    h3,
-    .logo {
-      font-family: Georgia, "Times New Roman", serif;
-    }
-
-    button,
-    input,
-    textarea,
-    select {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* ANNOUNCEMENT */
-
-    .announcement {
-      background: var(--brown);
-      color: white;
-      text-align: center;
-      padding: 9px 15px;
-      font-size: 12px;
-      letter-spacing: 0.5px;
-    }
-
-    /* HEADER */
-
-    header {
-      background: rgba(251, 247, 241, 0.96);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav {
-      max-width: 1200px;
-      margin: auto;
-      min-height: 82px;
-      padding: 12px 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .logo {
-      font-size: 32px;
-      letter-spacing: 3px;
-      color: var(--brown);
-      white-space: nowrap;
-    }
-
-    .logo small {
-      display: block;
-      font-family: Arial, sans-serif;
-      font-size: 8px;
-      letter-spacing: 4px;
-      text-align: center;
-      margin-top: -5px;
-      color: var(--gold);
-    }
-
-    nav {
-      display: flex;
-      gap: 25px;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: var(--gold);
-    }
-
-    .nav-actions {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .icon-btn {
-      border: 1px solid var(--border);
-      background: white;
-      width: 43px;
-      height: 43px;
-      border-radius: 50%;
-      position: relative;
-      font-size: 18px;
-    }
-
-    .cart-count {
-      position: absolute;
-      top: -5px;
-      right: -3px;
-      background: var(--brown);
-      color: white;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      font-size: 11px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    /* HERO */
-
-    .hero {
-      max-width: 1200px;
-      margin: auto;
-      padding: 65px 25px 75px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 55px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 4px;
-      color: var(--gold);
-      margin-bottom: 15px;
-    }
-
-    .hero h1 {
-      font-size: clamp(45px, 6vw, 72px);
-      line-height: 1.05;
-      font-weight: normal;
-      color: var(--brown);
-      margin-bottom: 22px;
-    }
-
-    .hero h1 span {
-      font-style: italic;
-    }
-
-    .hero p {
-      max-width: 500px;
-      color: var(--muted);
-      font-size: 16px;
-      margin-bottom: 28px;
-    }
-
-    .primary-btn {
-      background: var(--brown);
-      color: white;
-      border: 0;
-      padding: 14px 25px;
-      border-radius: 30px;
-      transition: 0.25s;
-    }
-
-    .primary-btn:hover {
-      transform: translateY(-2px);
-      background: #51372d;
-    }
-
-    .hero-features {
-      display: flex;
-      gap: 25px;
-      margin-top: 38px;
-    }
-
-    .hero-feature {
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .hero-feature strong {
-      display: block;
-      color: var(--brown);
-      margin-bottom: 3px;
-    }
-
-    /* HERO IMAGE / CANDLE */
-
-    .hero-image {
-      min-height: 500px;
-      border-radius: 220px 220px 25px 25px;
-      background:
-        radial-gradient(circle at 70% 20%, rgba(255,255,255,.7), transparent 22%),
-        linear-gradient(145deg, #e8d8c9, #c6a990);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-image::before {
-      content: "";
-      position: absolute;
-      width: 250px;
-      height: 120px;
-      background: rgba(255,255,255,.25);
-      border-radius: 50%;
-      top: 55px;
-      left: 35px;
-      transform: rotate(-20deg);
-    }
-
-    .hero-candle {
-      width: 230px;
-      height: 265px;
-      background: #f8f1e7;
-      border-radius: 25px 25px 55px 55px;
-      margin-bottom: 35px;
-      box-shadow: 0 30px 45px rgba(70,40,20,.20);
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-candle::before {
-      content: "";
-      position: absolute;
-      width: 5px;
-      height: 28px;
-      background: #3b3028;
-      top: -24px;
-      border-radius: 4px;
-    }
-
-    .flame {
-      position: absolute;
-      width: 17px;
-      height: 27px;
-      background: #f1ad42;
-      border-radius: 70% 30% 70% 30%;
-      transform: rotate(45deg);
-      top: -52px;
-      box-shadow: 0 0 25px rgba(245,170,50,.8);
-    }
-
-    .candle-label {
-      text-align: center;
-      border: 1px solid #b89972;
-      padding: 22px 16px;
-      width: 155px;
-      color: var(--brown);
-    }
-
-    .candle-label strong {
-      font-family: Georgia, serif;
-      font-size: 19px;
-      letter-spacing: 2px;
-      display: block;
-    }
-
-    .candle-label span {
-      display: block;
-      font-size: 8px;
-      letter-spacing: 2px;
-      margin-top: 7px;
-    }
-
-    /* SECTION */
-
-    .section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 75px 25px;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 42px;
-    }
-
-    .section-heading small {
-      color: var(--gold);
-      letter-spacing: 3px;
-      font-size: 10px;
-    }
-
-    .section-heading h2 {
-      font-size: 39px;
-      font-weight: normal;
-      color: var(--brown);
-      margin-top: 8px;
-    }
-
-    /* CATEGORY */
-
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 18px;
-    }
-
-    .category {
-      text-align: center;
-      cursor: pointer;
-    }
-
-    .category-img {
-      height: 145px;
-      border-radius: 50%;
-      background: var(--cream2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 55px;
-      margin-bottom: 12px;
-      transition: 0.25s;
-      border: 1px solid var(--border);
-    }
-
-    .category:hover .category-img {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .category p {
-      font-family: Georgia, serif;
-      font-size: 14px;
-      color: var(--brown);
-    }
-
-    /* PRODUCTS */
-
-    .shop-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-
-    .shop-header h2 {
-      font-size: 38px;
-      font-weight: normal;
-      color: var(--brown);
-    }
-
-    .search {
-      border: 1px solid var(--border);
-      background: white;
-      padding: 11px 15px;
-      border-radius: 25px;
-      width: 230px;
-      outline: none;
-    }
-
-    .products {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-    }
-
-    .product {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      position: relative;
-      transition: 0.25s;
-    }
-
-    .product:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow);
-    }
-
-    .product-image {
-      height: 275px;
-      background:
-        radial-gradient(circle at 50% 15%, rgba(255,255,255,.9), transparent 20%),
-        linear-gradient(145deg, #f0e4d7, #d7c0aa);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .product:nth-child(2) .product-image {
-      background: linear-gradient(145deg, #eee1d0, #d7b68e);
-    }
-
-    .product:nth-child(3) .product-image {
-      background: linear-gradient(145deg, #dbc7b5, #a4775a);
-    }
-
-    .product:nth-child(4) .product-image {
-      background: linear-gradient(145deg, #f4eee7, #d8ccc0);
-    }
-
-    .product:nth-child(5) .product-image {
-      background: linear-gradient(145deg, #f1ded8, #d2aaa3);
-    }
-
-    .product:nth-child(6) .product-image {
-      background: linear-gradient(145deg, #cde4e8, #6fa7b2);
-    }
-
-    .mini-candle {
-      width: 125px;
-      height: 145px;
-      background: #f8f3ec;
-      border-radius: 14px 14px 30px 30px;
-      box-shadow: 0 20px 30px rgba(60,40,30,.18);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .mini-candle::before {
-      content: "";
-      width: 4px;
-      height: 18px;
-      background: #3d322b;
-      position: absolute;
-      top: -14px;
-    }
-
-    .mini-flame {
-      width: 12px;
-      height: 18px;
-      background: #eaa743;
-      border-radius: 70% 30% 70% 30%;
-      transform: rotate(45deg);
-      position: absolute;
-      top: -32px;
-    }
-
-    .mini-label {
-      text-align: center;
-      border: 1px solid #b99a76;
-      padding: 13px 7px;
-      font-family: Georgia, serif;
-      font-size: 12px;
-      letter-spacing: 1px;
-      color: var(--brown);
-    }
-
-    .favorite {
-      position: absolute;
-      right: 14px;
-      top: 14px;
-      background: white;
-      border: 0;
-      border-radius: 50%;
-      width: 37px;
-      height: 37px;
-      font-size: 18px;
-    }
-
-    .product-info {
-      padding: 19px;
-    }
-
-    .product-info h3 {
-      color: var(--brown);
-      font-size: 20px;
-      margin-bottom: 5px;
-    }
-
-    .stars {
-      color: #b28a55;
-      font-size: 13px;
-      margin-bottom: 9px;
-    }
-
-    .price {
-      font-weight: bold;
-      font-size: 19px;
-      margin-bottom: 13px;
-    }
-
-    .add-btn {
-      width: 100%;
-      background: white;
-      border: 1px solid var(--brown);
-      color: var(--brown);
-      padding: 11px;
-      border-radius: 25px;
-      transition: .2s;
-    }
-
-    .add-btn:hover {
-      background: var(--brown);
-      color: white;
-    }
-
-    /* BANNER */
-
-    .gift-banner {
-      max-width: 1150px;
-      margin: 20px auto 70px;
-      padding: 65px 50px;
-      background:
-        linear-gradient(90deg, rgba(65,40,30,.82), rgba(65,40,30,.45)),
-        linear-gradient(135deg, #cdb09b, #8b6754);
-      border-radius: 20px;
-      color: white;
-    }
-
-    .gift-banner small {
-      letter-spacing: 3px;
-    }
-
-    .gift-banner h2 {
-      font-size: 45px;
-      font-weight: normal;
-      max-width: 550px;
-      margin: 8px 0 15px;
-    }
-
-    .gift-banner p {
-      max-width: 550px;
-      opacity: .9;
-      margin-bottom: 25px;
-    }
-
-    .light-btn {
-      background: white;
-      color: var(--brown);
-      border: 0;
-      padding: 13px 23px;
-      border-radius: 25px;
-    }
-
-    /* BENEFITS */
-
-    .benefits {
-      background: var(--cream2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .benefit-grid {
-      max-width: 1100px;
-      margin: auto;
-      padding: 35px 20px;
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      text-align: center;
-      gap: 20px;
-    }
-
-    .benefit {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .benefit-icon {
-      font-size: 28px;
-      display: block;
-      margin-bottom: 7px;
-    }
-
-    .benefit strong {
-      color: var(--brown);
-      display: block;
-    }
-
-    /* ABOUT */
-
-    .about {
-      max-width: 1100px;
-      margin: auto;
-      padding: 80px 25px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-image {
-      min-height: 420px;
-      border-radius: 18px;
-      background:
-        radial-gradient(circle at center, rgba(255,255,255,.3), transparent 30%),
-        linear-gradient(145deg, #d6c2af, #92705d);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .about-candle {
-      width: 190px;
-      height: 240px;
-      background: #f2e9dd;
-      border-radius: 20px 20px 45px 45px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 30px 45px rgba(60,40,30,.25);
-    }
-
-    .about-label {
-      border: 1px solid #b08a61;
-      padding: 20px;
-      text-align: center;
-      font-family: Georgia, serif;
-      color: var(--brown);
-      letter-spacing: 2px;
-    }
-
-    .about-text small {
-      color: var(--gold);
-      letter-spacing: 3px;
-    }
-
-    .about-text h2 {
-      font-size: 42px;
-      font-weight: normal;
-      color: var(--brown);
-      margin: 10px 0 20px;
-    }
-
-    .about-text p {
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      background: #3d2d26;
-      color: #eee5dd;
-      padding: 55px 25px 25px;
-    }
-
-    .footer-grid {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-      gap: 35px;
-    }
-
-    footer h3 {
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: white;
-    }
-
-    footer p,
-    footer a {
-      color: #cdbfb5;
-      font-size: 13px;
-      display: block;
-      margin: 7px 0;
-    }
-
-    .newsletter {
-      display: flex;
-      margin-top: 12px;
-    }
-
-    .newsletter input {
-      min-width: 0;
-      flex: 1;
-      padding: 11px;
-      border: 0;
-      outline: none;
-    }
-
-    .newsletter button {
-      background: var(--gold);
-      color: white;
-      border: 0;
-      padding: 0 16px;
-    }
-
-    .copyright {
-      max-width: 1100px;
-      border-top: 1px solid rgba(255,255,255,.15);
-      margin: 40px auto 0;
-      padding-top: 20px;
-      text-align: center;
-      font-size: 12px;
-      color: #b8aaa1;
-    }
-
-    /* CART */
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(20,10,5,.45);
-      z-index: 500;
-      display: none;
-    }
-
-    .overlay.active {
-      display: block;
-    }
-
-    .cart {
-      position: fixed;
-      right: 0;
-      top: 0;
-      height: 100vh;
-      width: min(440px, 100%);
-      background: var(--cream);
-      z-index: 501;
-      transform: translateX(100%);
-      transition: .3s;
-      display: flex;
-      flex-direction: column;
-      box-shadow: -15px 0 40px rgba(30,20,10,.2);
-    }
-
-    .cart.active {
-      transform: translateX(0);
-    }
-
-    .cart-header {
-      padding: 22px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .cart-header h2 {
-      font-weight: normal;
-      color: var(--brown);
-    }
-
-    .close {
-      border: 0;
-      background: transparent;
-      font-size: 25px;
-    }
-
-    .cart-items {
-      flex: 1;
-      overflow-y: auto;
-      padding: 20px;
-    }
-
-    .cart-item {
-      display: flex;
-      gap: 13px;
-      border-bottom: 1px solid var(--border);
-      padding: 13px 0;
-    }
-
-    .cart-thumb {
-      width: 65px;
-      height: 65px;
-      background: var(--cream2);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-    }
-
-    .cart-item-info {
-      flex: 1;
-    }
-
-    .cart-item-info h4 {
-      color: var(--brown);
-      margin-bottom: 3px;
-    }
-
-    .quantity {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      margin-top: 6px;
-    }
-
-    .quantity button {
-      border: 1px solid var(--border);
-      background: white;
-      width: 25px;
-      height: 25px;
-      border-radius: 50%;
-    }
-
-    .remove {
-      border: 0;
-      background: transparent;
-      color: #a07867;
-      font-size: 12px;
-      margin-left: 10px;
-    }
-
-    .cart-footer {
-      padding: 20px;
-      border-top: 1px solid var(--border);
-      background: white;
-    }
-
-    .cart-total {
-      display: flex;
-      justify-content: space-between;
-      font-size: 20px;
-      margin-bottom: 15px;
-      color: var(--brown);
-    }
-
-    /* CHECKOUT */
-
-    .checkout {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--cream);
-      z-index: 700;
-      overflow-y: auto;
-    }
-
-    .checkout.active {
-      display: block;
-    }
-
-    .checkout-inner {
-      max-width: 800px;
-      margin: auto;
-      padding: 35px 20px 70px;
-    }
-
-    .checkout-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 35px;
-    }
-
-    .checkout-header h2 {
-      font-size: 35px;
-      font-weight: normal;
-      color: var(--brown);
-    }
-
-    .form-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      padding: 25px;
-      margin-bottom: 20px;
-    }
-
-    .form-card h3 {
-      color: var(--brown);
-      margin-bottom: 18px;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 13px;
-      margin-bottom: 6px;
-      color: var(--muted);
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      outline: none;
-      background: white;
-    }
-
-    .form-group textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .payment-box {
-      background: #f7f0e8;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-    }
-
-    .order-summary {
-      background: var(--cream2);
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .order-line {
-      display: flex;
-      justify-content: space-between;
-      padding: 5px 0;
-      font-size: 14px;
-    }
-
-    /* TOAST */
-
-    .toast {
-      position: fixed;
-      bottom: 25px;
-      left: 50%;
-      transform: translate(-50%, 100px);
-      background: #3d2d26;
-      color: white;
-      padding: 13px 22px;
-      border-radius: 30px;
-      z-index: 1000;
-      transition: .3s;
-      opacity: 0;
-    }
-
-    .toast.show {
-      transform: translate(-50%, 0);
-      opacity: 1;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 850px) {
-      nav {
-        display: none;
-      }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 45px;
-      }
-
-      .hero-image {
-        min-height: 390px;
-      }
-
-      .categories {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .benefit-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-
-      .about {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-    }
-
-    @media (max-width: 550px) {
-      .nav {
-        padding: 10px 15px;
-      }
-
-      .logo {
-        font-size: 26px;
-      }
-
-      .hero {
-        padding: 40px 18px 55px;
-      }
-
-      .hero h1 {
-        font-size: 46px;
-      }
-
-      .hero-features {
-        gap: 13px;
-      }
-
-      .section {
-        padding: 55px 18px;
-      }
-
-      .categories {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .products {
-        grid-template-columns: 1fr;
-      }
-
-      .shop-header {
-        display: block;
-      }
-
-      .search {
-        width: 100%;
-        margin-top: 15px;
-      }
-
-      .gift-banner {
-        margin: 10px 18px 55px;
-        padding: 40px 25px;
-      }
-
-      .gift-banner h2 {
-        font-size: 35px;
-      }
-
-      .benefit-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Belora Candles | Handcrafted with Love</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+font-family:Arial,sans-serif;
+background:#fbf7f1;
+color:#352820;
+line-height:1.5
+}
+header{
+background:#fff;
+padding:18px 20px;
+position:sticky;
+top:0;
+z-index:10;
+box-shadow:0 2px 12px #0001
+}
+.nav{
+max-width:1100px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between
+}
+.logo{
+font-family:Georgia,serif;
+font-size:30px;
+font-weight:bold;
+color:#6b4b3e
+}
+.cart{
+background:#6b4b3e;
+color:white;
+border:0;
+padding:11px 18px;
+border-radius:25px;
+font-size:16px
+}
+.hero{
+text-align:center;
+padding:65px 20px;
+background:linear-gradient(#ead5cf,#fbf7f1)
+}
+.hero h1{
+font-family:Georgia,serif;
+font-size:46px;
+margin-bottom:12px
+}
+.hero p{
+font-size:18px;
+color:#756b65
+}
+.shop{
+max-width:1100px;
+margin:45px auto;
+padding:0 20px
+}
+.shop h2{
+font-family:Georgia,serif;
+text-align:center;
+font-size:34px;
+margin-bottom:30px
+}
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:22px
+}
+.card{
+background:white;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 5px 20px #00000012;
+padding-bottom:18px
+}
+.product-img{
+height:220px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:90px;
+background:#f3eadf
+}
+.card h3{
+font-family:Georgia,serif;
+font-size:21px;
+padding:15px 15px 4px
+}
+.card p{
+padding:0 15px;
+color:#756b65;
+font-size:14px
+}
+.price{
+display:block;
+padding:10px 15px;
+font-size:20px;
+font-weight:bold;
+color:#6b4b3e
+}
+.add{
+margin:0 15px;
+width:calc(100% - 30px);
+padding:11px;
+border:0;
+border-radius:10px;
+background:#6b4b3e;
+color:white;
+font-size:15px
+}
+.add:active{transform:scale(.98)}
+#cartBox{
+display:none;
+max-width:650px;
+margin:30px auto 60px;
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 5px 25px #0002
+}
+#cartBox h2{
+font-family:Georgia,serif;
+margin-bottom:15px
+}
+.cart-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 0;
+border-bottom:1px solid #eee
+}
+.qty button{
+border:0;
+background:#ead5cf;
+padding:5px 10px;
+border-radius:5px
+}
+.total{
+font-size:21px;
+font-weight:bold;
+text-align:right;
+padding:18px 0
+}
+.form input,.form textarea{
+width:100%;
+padding:13px;
+margin:7px 0;
+border:1px solid #ddd;
+border-radius:9px;
+font-size:15px
+}
+.form textarea{height:80px}
+.order{
+width:100%;
+padding:14px;
+background:#25d366;
+color:white;
+border:0;
+border-radius:10px;
+font-size:17px;
+font-weight:bold;
+margin-top:10px
+}
+footer{
+text-align:center;
+background:#352820;
+color:white;
+padding:30px 20px;
+margin-top:40px
+}
+footer p{margin:5px}
+</style>
 </head>
 
 <body>
 
-  <!-- ANNOUNCEMENT -->
+<header>
+<div class="nav">
+<div class="logo">Belora 🕯️</div>
+<button class="cart" onclick="showCart()">
+🛒 Cart (<span id="count">0</span>)
+</button>
+</div>
+</header>
+
+<section class="hero">
+<h1>Belora Candles</h1>
+<p>Handcrafted candles made to make every moment glow ✨</p>
+</section>
+
+<section class="shop">
+<h2>Our Collection</h2>
+
+<div class="products">
+
+<div class="card">
+<div class="product-img">🪔</div>
+<h3>Matka Candle</h3>
+<p>Beautiful handcrafted traditional pot candle.</p>
+<span class="price">₹399</span>
+<button class="add" onclick="addToCart('Matka Candle',399)">Add to Cart</button>
+</div>
+
+<div class="card">
+<div class="product-img">🍫</div>
+<h3>Kaju Katli Candle</h3>
+<p>Sweet-looking handcrafted candle inspired by kaju katli.</p>
+<span class="price">₹299</span>
+<button class="add" onclick="addToCart('Kaju Katli Candle',299)">Add to Cart</button>
+</div>
+
+<div class="card">
+<div class="product-img">🌊</div>
+<h3>Ocean Candle</h3>
+<p>A calming candle inspired by the beauty of the ocean.</p>
+<span class="price">₹349</span>
+<button class="add" onclick="addToCart('Ocean Candle',349)">Add to Cart</button>
+</div>
+
+<div class="card">
+<div class="product-img">🌸</div>
+<h3>Flower Candle</h3>
+<p>Elegant floral candle, perfect for gifting.</p>
+<span class="price">₹299</span>
+<button class="add" onclick="addToCart('Flower Candle',299)">Add to Cart</button>
+</div>
+
+<div class="card">
+<div class="product-img">🍡</div>
+<h3>Modak Candle</h3>
+<p>Festive handcrafted modak-shaped candle.</p>
+<span class="price">₹349</span>
+<button class="add" onclick="addToCart('Modak Candle',349)">Add to Cart</button>
+</div>
+
+<div class="card">
+<div class="product-img">🧁</div>
+<h3>Bubble Candle</h3>
+<p>Trendy bubble candle for beautiful home décor.</p>
+<span class="price">₹249</span>
+<button class="add" onclick="addToCart('Bubble Candle',249)">Add to Cart</button>
+</div>
+
+</div>
+</section>
+
+<div id="cartBox">
 
-  <div class="announcement">
-    ✦ Free shipping on orders above ₹999 &nbsp; | &nbsp;
-    Handcrafted with love &nbsp; | &nbsp; Delivering across India ✦
-  </div>
+<h2>Your Cart 🛒</h2>
 
-  <!-- HEADER -->
+<div id="items"></div>
 
-  <header>
-    <div class="nav">
+<div class="total">
+Total: ₹<span id="total">0</span>
+</div>
 
-      <a href="#home">
-        <div class="logo">
-          BELORA
-          <small>CANDLES FOR A BRIGHTER YOU</small>
-        </div>
-      </a>
+<div class="form">
+<input id="name" placeholder="Your Name">
+<input id="phone" placeholder="Phone Number">
+<textarea id="address" placeholder="Complete Delivery Address"></textarea>
+</div>
 
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#collections">Collections</a>
-        <a href="#about">About Us</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<button class="order" onclick="placeOrder()">
+📲 Place Order on WhatsApp
+</button>
 
-      <div class="nav-actions">
+</div>
 
-        <button class="icon-btn" onclick="focusSearch()" aria-label="Search">
-          🔍
-        </button>
+<footer>
+<h3>Belora Candles 🕯️</h3>
+<p>Handcrafted with love • Made for gifting • Made for memories</p>
+<p>© 2026 Belora Candles</p>
+</footer>
 
-        <button class="icon-btn" onclick="openCart()" aria-label="Cart">
-          🛍️
-          <span class="cart-count" id="cartCount">0</span>
-        </button>
+<script>
 
-      </div>
-    </div>
-  </header>
+let cart=[];
 
+function addToCart(name,price){
+let item=cart.find(x=>x.name===name);
 
-  <!-- HERO -->
+if(item){
+item.qty++;
+}else{
+cart.push({name:name,price:price,qty:1});
+}
 
-  <main id="home">
+updateCart();
 
-    <section class="hero">
+alert(name+" added to cart 🕯️");
+}
 
-      <div>
+function updateCart(){
 
-        <div class="eyebrow">
-          HANDCRAFTED • MINDFUL • MEANINGFUL
-        </div>
+document.getElementById("count").innerText=
+cart.reduce((sum,x)=>sum+x.qty,0);
 
-        <h1>
-          More than candles,<br />
-          <span>moments of calm.</span>
-        </h1>
+let html="";
+let total=0;
 
-        <p>
-          Beautifully handcrafted candles for your home,
-          your celebrations and your everyday joy.
-        </p>
+cart.forEach((item,index)=>{
 
-        <button
-          class="primary-btn"
-          onclick="document.getElementById('shop').scrollIntoView()"
-        >
-          SHOP NOW →
-        </button>
+let subtotal=item.price*item.qty;
+total+=subtotal;
 
-        <div class="hero-features">
+html+=`
+<div class="cart-item">
+<div>
+<b>${item.name}</b><br>
+₹${item.price} × ${item.qty}
+</div>
 
-          <div class="hero-feature">
-            <strong>🌿 Natural</strong>
-            Ingredients
-          </div>
+<div class="qty">
+<button onclick="changeQty(${index},-1)">−</button>
+<button onclick="changeQty(${index},1)">+</button>
+</div>
+</div>
+`;
+});
 
-          <div class="hero-feature">
-            <strong>♡ Handmade</strong>
-            With Love
-          </div>
+document.getElementById("items").innerHTML=html;
+document.getElementById("total").innerText=total;
 
-          <div class="hero-feature">
-            <strong>🎁 Perfect</strong>
-            For Gifting
-          </div>
+}
 
-        </div>
+function changeQty(index,change){
 
-      </div>
+cart[index].qty+=change;
 
+if(cart[index].qty<=0){
+cart.splice(index,1);
+}
 
-      <div class="hero-image">
+updateCart();
 
-        <div class="hero-candle">
-          <div class="flame"></div>
+}
 
-          <div class="candle-label">
-            <strong>BELORA</strong>
-            <span>HAND POURED</span>
-            <span>SOY WAX CANDLE</span>
-          </div>
+function showCart(){
 
-        </div>
+let box=document.getElementById("cartBox");
 
-      </div>
+box.style.display="block";
 
-    </section>
+box.scrollIntoView({
+behavior:"smooth"
+});
 
+updateCart();
 
-    <!-- CATEGORIES -->
+}
 
-    <section
-      class="section"
-      id="collections"
-    >
+function placeOrder(){
 
-      <div class="section-heading">
-        <small>EXPLORE OUR WORLD</small>
-        <h2>Shop by Category</h2>
-      </div>
+if(cart.length===0){
+alert("Please add a candle to your cart first.");
+return;
+}
 
-      <div class="categories">
+let name=document.getElementById("name").value.trim();
+let phone=document.getElementById("phone").value.trim();
+let address=document.getElementById("address").value.trim();
 
-        <div class="category" onclick="filterCategory('Festival')">
-          <div class="category-img">🪔</div>
-          <p>Festival Candles</p>
-        </div>
+if(!name || !phone || !address){
+alert("Please enter your name, phone number and delivery address.");
+return;
+}
 
-        <div class="category" onclick="filterCategory('Matka')">
-          <div class="category-img">🏺</div>
-          <p>Matka Candles</p>
-        </div>
+let message="🕯️ *BELORA CANDLE ORDER*%0A%0A";
 
-        <div class="category" onclick="filterCategory('Decor')">
-          <div class="category-img">🕯️</div>
-          <p>Decor Candles</p>
-        </div>
+message+="*Customer:* "+name+"%0A";
+message+="*Phone:* "+phone+"%0A";
+message+="*Address:* "+address+"%0A%0A";
 
-        <div class="category" onclick="filterCategory('Sweets')">
-          <div class="category-img">🍬</div>
-          <p>Sweets Collection</p>
-        </div>
+message+="*ORDER DETAILS:*%0A";
 
-        <div class="category" onclick="filterCategory('Aromatic')">
-          <div class="category-img">🌹</div>
-          <p>Aromatic Candles</p>
-        </div>
+let total=0;
 
-        <div class="category" onclick="filterCategory('Gift')">
-          <div class="category-img">🎁</div>
-          <p>Gift Sets</p>
-        </div>
+cart.forEach(item=>{
 
-      </div>
+let subtotal=item.price*item.qty;
+total+=subtotal;
 
-    </section>
+message+=
+"• "+item.name+
+" × "+item.qty+
+" = ₹"+subtotal+
+"%0A";
 
+});
 
-    <!-- PRODUCTS -->
+message+="%0A*TOTAL: ₹"+total+"*%0A%0A";
+message+="Thank you for shopping with Belora 🕯️✨";
 
-    <section class="section" id="shop">
+let whatsappNumber="919741085584";
 
-      <div class="shop-header">
+window.open(
+"https://wa.me/"+whatsappNumber+
+"?text="+message,
+"_blank"
+);
 
-        <h2>Best Sellers</h2>
+}
 
-        <input
-          id="searchInput"
-          class="search"
-          type="search"
-          placeholder="Search candles..."
-          oninput="searchProducts()"
-        />
+updateCart();
 
-      </div>
-
-
-      <div class="products" id="products"></div>
-
-    </section>
-
-
-    <!-- GIFT BANNER -->
-
-    <section class="gift-banner">
-
-      <small>MADE FOR SPECIAL MOMENTS</small>
-
-      <h2>
-        Thoughtful Gifts for Every Occasion
-      </h2>
-
-      <p>
-        Birthdays, festivals, housewarmings or just because —
-        find a little light for someone special.
-      </p>
-
-      <button
-        class="light-btn"
-        onclick="filterCategory('Gift')"
-      >
-        EXPLORE GIFT SETS →
-      </button>
-
-    </section>
-
-
-    <!-- BENEFITS -->
-
-    <section class="benefits">
-
-      <div class="benefit-grid">
-
-        <div class="benefit">
-          <span class="benefit-icon">🚚</span>
-          <strong>Pan India Delivery</strong>
-          Carefully packed & shipped
-        </div>
-
-        <div class="benefit">
-          <span class="benefit-icon">🌿</span>
-          <strong>Eco-friendly</strong>
-          Thoughtfully crafted
-        </div>
-
-        <div class="benefit">
-          <span class="benefit-icon">♡</span>
-          <strong>Handmade with Love</strong>
-          Small batch candles
-        </div>
-
-        <div class="benefit">
-          <span class="benefit-icon">🎁</span>
-          <strong>Custom Gifting</strong>
-          Made for your moments
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section class="about" id="about">
-
-      <div class="about-image">
-
-        <div class="about-candle">
-
-          <div class="about-label">
-            BELORA<br />
-            <small>HANDMADE</small><br />
-            <small>WITH LOVE</small>
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="about-text">
-
-        <small>OUR STORY</small>
-
-        <h2>About Belora</h2>
-
-        <p>
-          At Belora, we believe in the power of small moments.
-          Our handcrafted candles are made with love and created
-          to bring warmth, joy and a little extra light into your life.
-        </p>
-
-        <p>
-          From everyday self-care to thoughtful gifting,
-          every Belora candle is made to make your moments
-          feel a little more special.
-        </p>
-
-        <button class="primary-btn">
-          HANDCRAFTED HAPPINESS ♡
-        </button>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-
-  <footer id="contact">
-
-    <div class="footer-grid">
-
-      <div>
-        <h3 class="logo" style="color:white;">
-          BELORA
-        </h3>
-
-        <p>
-          Candles for a brighter you.
-        </p>
-
-        <p>
-          Handcrafted with love in India ♡
-        </p>
-      </div>
-
-
-      <div>
-
-        <h3>Quick Links</h3>
-
-        <a href="#home">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#about">About Us</a>
-        <a href="#contact">Contact</a>
-
-      </div>
-
-
-      <div>
-
-        <h3>Customer Care</h3>
-
-        <a href="#">Shipping Policy</a>
-        <a href="#">Return & Refund</a>
-        <a href="#">FAQs</a>
-        <a href="#">Track Order</a>
-
-      </div>
-
-
-      <div>
-
-        <h3>Stay Connected</h3>
-
-        <p>
-          Join the Belora candle community.
-        </p>
-
-        <div class="newsletter">
-          <input
-            type="email"
-            placeholder="Your email address"
-          />
-          <button onclick="subscribe()">
-            →
-          </button>
-        </div>
-
-        <p style="margin-top:15px;">
-          Instagram: @belora.candles
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <div class="copyright">
-      © 2026 Belora Candles. All rights reserved.
-      &nbsp; | &nbsp; Handmade with love in India ♡
-    </div>
-
-  </footer>
-
-
-  <!-- CART OVERLAY -->
-
-  <div
-    class="overlay"
-    id="overlay"
-    onclick="closeCart()"
-  ></div>
-
-
-  <!-- CART -->
-
-  <aside class="cart" id="cart">
-
-    <div class="cart-header">
-
-      <h2>Your Cart</h2>
-
-      <button
-        class="close"
-        onclick="closeCart()"
-      >
-        ×
-      </button>
-
-    </div>
-
-
-    <div
-      class="cart-items"
-      id="cartItems"
-    ></div>
-
-
-    <div class="cart-footer">
-
-      <div class="cart-total">
-
-        <span>Total</span>
-
-        <strong>
-          ₹<span id="cartTotal">0</span>
-        </strong>
-
-      </div>
-
-      <button
-        class="primary-btn"
-        style="width:100%;"
-        onclick="openCheckout()"
-      >
-        PROCEED TO CHECKOUT →
-      </button>
-
-    </div>
-
-  </aside>
-
-
-  <!-- CHECKOUT -->
-
-  <section
-    class="checkout"
-    id="checkout"
-  >
-
-    <div class="checkout-inner">
-
-      <div class="checkout-header">
-
-        <h2>Checkout</h2>
-
-        <button
-          class="close"
-          onclick="closeCheckout()"
-        >
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="form-card">
-
-        <h3>Customer Details</h3>
-
-        <div class="form-group">
-
-          <label>Full Name *</label>
-
-          <input
-            id="customerName"
-            type="text"
-            placeholder="Enter your full name"
-          />
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Mobile Number *</label>
-
-          <input
-            id="customerPhone"
-            type="tel"
-            placeholder="10 digit mobile number"
-          />
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Email Address</label>
-
-          <input
-            id="customerEmail"
-            type="email"
-            placeholder="Your email address"
-          />
-
-        </div>
-
-
-        <div class="form-group">
-
-          <label>Complete Delivery Address *</label>
-
-          <textarea
-            id="customerAddress"
-            placeholder="House/Flat, Street, Area, City, State, PIN"
-          ></textarea>
-
-        </div>
-
-      </div>
-
-
-      <div class="form-card">
-
-        <h3>Payment Method</h3>
-
-        <div class="payment-box">
-
-          <label>
-            <input
-              type="radio"
-              name="payment"
-              value="UPI"
-              checked
-            />
-
-            UPI / Online Payment
-          </label>
-
-        </div>
-
-        <div class="payment-box">
-
-          <label>
-            <input
-              type="radio"
-              name="payment"
-              value="COD"
-            />
-
-            Cash on Delivery
-          </label>
-
-        </div>
-
-        <p style="font-size:12px;color:#756b65;">
-          Online payment can be connected to your
-          UPI/payment gateway after the website is deployed.
-        </p>
-
-      </div>
-
-
-      <div class="form-card">
-
-        <h3>Order Summary</h3>
-
-        <div
-          class="order-summary"
-          id="checkoutSummary"
-        ></div>
-
-        <button
-          class="primary-btn"
-          style="width:100%;"
-          onclick="placeOrder()"
-        >
-          PLACE ORDER →
-        </button>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- TOAST -->
-
-  <div
-    class="toast"
-    id="toast"
-  ></div>
-
-
-  <script>
-
-    /*
-      ============================================
-      BELORA PRODUCT DATA
-      ============================================
-    */
-
-    const products = [
-
-      {
-        id: 1,
-        name: "Modak Candle",
-        price: 299,
-        category: "Festival",
-        rating: 4.9,
-        emoji: "🪔"
-      },
-
-      {
-        id: 2,
-        name: "Kaju Katli Candle",
-        price: 349,
-        category: "Sweets",
-        rating: 4.8,
-        emoji: "🍬"
-      },
-
-      {
-        id: 3,
-        name: "Matka Candle",
-        price: 399,
-        category: "Matka",
-        rating: 4.9,
-        emoji: "🏺"
-      },
-
-      {
-        id: 4,
-        name: "Bubble Candle",
-        price: 299,
-        category: "Decor",
-        rating: 4.7,
-        emoji: "🕯️"
-      },
-
-      {
-        id: 5,
-        name: "Rose Pot Candle",
-        price: 349,
-        category: "Aromatic",
-        rating: 4.8,
-        emoji: "🌹"
-      },
-
-      {
-        id: 6,
-        name: "Ocean Candle",
-        price: 399,
-        category: "Decor",
-        rating: 4.8,
-        emoji: "🌊"
-      },
-
-      {
-        id: 7,
-        name: "Vanilla Amber Candle",
-        price: 449,
-        category: "Aromatic",
-        rating: 5,
-        emoji: "✨"
-      },
-
-      {
-        id: 8,
-        name: "Lavender Bloom Candle",
-        price: 449,
-        category: "Aromatic",
-        rating: 4.9,
-        emoji: "💜"
-      },
-
-      {
-        id: 9,
-        name: "Belora Gift Set",
-        price: 799,
-        category: "Gift",
-        rating: 5,
-        emoji: "🎁"
-      }
-
-    ];
-
-
-    let cart = JSON.parse(
-      localStorage.getItem("beloraCart") || "[]"
-    );
-
-
-    /*
-      ============================================
-      DISPLAY PRODUCTS
-      ============================================
-    */
-
-    function displayProducts(list = products) {
-
-      const container =
-        document.getElementById("products");
-
-      container.innerHTML = "";
-
-      if (!list.length) {
-
-        container.innerHTML = `
-          <p style="grid-column:1/-1;text-align:center;padding:50px;">
-            No candles found ♡
-          </p>
-        `;
-
-        return;
-      }
-
-
-      list.forEach(product => {
-
-        container.innerHTML += `
-
-          <article class="product">
-
-            <div class="product-image">
-
-              <button
-                class="favorite"
-                onclick="favoriteProduct(${product.id})"
-              >
-                ♡
-              </button>
-
-              <div class="mini-candle">
-
-                <div class="mini-flame"></div>
-
-                <div class="mini-label">
-                  BELORA<br />
-                  <small>${product.name}</small>
-                </div>
-
-              </div>
-
-            </div>
-
-
-            <div class="product-info">
-
-              <h3>
-                ${product.name}
-              </h3>
-
-              <div class="stars">
-                ★★★★★
-                <span style="color:#756b65;">
-                  ${product.rating}
-                </span>
-              </div>
-
-              <div class="price">
-                ₹${product.price}
-              </div>
-
-              <button
-                class="add-btn"
-                onclick="addToCart(${product.id})"
-              >
-                ADD TO CART
-              </button>
-
-            </div>
-
-          </article>
-
-        `;
-
-      });
-
-    }
-
-
-    /*
-      ============================================
-      CART
-      ============================================
-    */
-
-    function addToCart(id) {
-
-      const product =
-        products.find(p => p.id === id);
-
-      const existing =
-        cart.find(item => item.id === id);
-
-
-      if (existing) {
-
-        existing.quantity++;
-
-      } else {
-
-        cart.push({
-          ...product,
-          quantity: 1
-        });
-
-      }
-
-
-      saveCart();
-
-      updateCart();
-
-      openCart();
-
-      showToast(
-        product.name + " added to cart ♡"
-      );
-
-    }
-
-
-    function removeFromCart(id) {
-
-      cart =
-        cart.filter(item => item.id !== id);
-
-      saveCart();
-
-      updateCart();
-
-    }
-
-
-    function changeQuantity(id, change) {
-
-      const item =
-        cart.find(item => item.id === id);
-
-      if (!item) return;
-
-      item.quantity += change;
-
-
-      if (item.quantity <= 0) {
-
-        removeFromCart(id);
-
-        return;
-
-      }
-
-
-      saveCart();
-
-      updateCart();
-
-    }
-
-
-    function saveCart() {
-
-      localStorage.setItem(
-        "beloraCart",
-        JSON.stringify(cart)
-      );
-
-    }
-
-
-    function getCartTotal() {
-
-      return cart.reduce(
-        (sum, item) =>
-          sum + item.price * item.quantity,
-        0
-      );
-
-    }
-
-
-    function getCartCount() {
-
-      return cart.reduce(
-        (sum, item) =>
-          sum + item.quantity,
-        0
-      );
-
-    }
-
-
-    function updateCart() {
-
-      const container =
-        document.getElementById("cartItems");
-
-      const count =
-        document.getElementById("cartCount");
-
-      const total =
-        document.getElementById("cartTotal");
-
-
-      count.textContent =
-        getCartCount();
-
-
-      total.textContent =
-        getCartTotal();
-
-
-      if (!cart.length) {
-
-        container.innerHTML = `
-
-          <div style="
-            text-align:center;
-            padding:60px 15px;
-            color:#756b65;
-          ">
-
-            <div style="font-size:45px;">
-              🕯️
-            </div>
-
-            <h3 style="
-              color:#6b4b3e;
-              margin:10px 0;
-            ">
-              Your cart is empty
-            </h3>
-
-            <p>
-              Add a little Belora magic to your cart.
-            </p>
-
-          </div>
-
-        `;
-
-        return;
-
-      }
-
-
-      container.innerHTML = "";
-
-
-      cart.forEach(item => {
-
-        container.innerHTML += `
-
-          <div class="cart-item">
-
-            <div class="cart-thumb">
-              ${item.emoji}
-            </div>
-
-            <div class="cart-item-info">
-
-              <h4>
-                ${item.name}
-              </h4>
-
-              <div>
-                ₹${item.price}
-              </div>
-
-              <div class="quantity">
-
-                <button
-                  onclick="changeQuantity(${item.id}, -1)"
-                >
-                  −
-                </button>
-
-                <span>
-                  ${item.quantity}
-                </span>
-
-                <button
-                  onclick="changeQuantity(${item.id}, 1)"
-                >
-                  +
-                </button>
-
-                <button
-                  class="remove"
-                  onclick="removeFromCart(${item.id})"
-                >
-                  Remove
-                </button>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        `;
-
-      });
-
-    }
-
-
-    function openCart() {
-
-      document
-        .getElementById("cart")
-        .classList.add("active");
-
-      document
-        .getElementById("overlay")
-        .classList.add("active");
-
-    }
-
-
-    function closeCart() {
-
-      document
-        .getElementById("cart")
-        .classList.remove("active");
-
-      document
-        .getElementById("overlay")
-        .classList.remove("active");
-
-    }
-
-
-    /*
-      ============================================
-      CHECKOUT
-      ============================================
-    */
-
-    function openCheckout() {
-
-      if (!cart.length) {
-
-        showToast(
-          "Your cart is empty."
-        );
-
-        return;
-
-      }
-
-
-      closeCart();
-
-      updateCheckoutSummary();
-
-      document
-        .getElementById("checkout")
-        .classList.add("active");
-
-      document.body.style.overflow =
-        "hidden";
-
-    }
-
-
-    function closeCheckout() {
-
-      document
-        .getElementById("checkout")
-        .classList.remove("active");
-
-      document.body.style.overflow =
-        "";
-
-    }
-
-
-    function updateCheckoutSummary() {
-
-      const summary =
-        document.getElementById(
-          "checkoutSummary"
-        );
-
-
-      let html = "";
-
-
-      cart.forEach(item => {
-
-        html += `
-
-          <div class="order-line">
-
-            <span>
-              ${item.name} × ${item.quantity}
-            </span>
-
-            <strong>
-              ₹${item.price * item.quantity}
-            </strong>
-
-          </div>
-
-        `;
-
-      });
-
-
-      html += `
-
-        <hr style="
-          border:0;
-          border-top:1px solid #e5d9cd;
-          margin:10px 0;
-        " />
-
-        <div class="order-line">
-
-          <strong>
-            Total
-          </strong>
-
-          <strong>
-            ₹${getCartTotal()}
-          </strong>
-
-        </div>
-
-      `;
-
-
-      summary.innerHTML = html;
-
-    }
-
-
-    /*
-      ============================================
-      PLACE ORDER
-      ============================================
-    */
-
-    function placeOrder() {
-
-      const name =
-        document.getElementById(
-          "customerName"
-        ).value.trim();
-
-      const phone =
-        document.getElementById(
-          "customerPhone"
-        ).value.trim();
-
-      const email =
-        document.getElementById(
-          "customerEmail"
-        ).value.trim();
-
-      const address =
-        document.getElementById(
-          "customerAddress"
-        ).value.trim();
-
-
-      if (!name || !phone || !address) {
-
-        showToast(
-          "Please fill in your name, phone and address."
-        );
-
-        return;
-
-      }
-
-
-      if (
-        phone.replace(/\D/g, "").length !== 10
-      ) {
-
-        showToast(
-          "Please enter a valid 10 digit mobile number."
-        );
-
-        return;
-
-      }
-
-
-      const payment =
-        document.querySelector(
-          'input[name="payment"]:checked'
-        ).value;
-
-
-      let orderText =
-        "BELORA CANDLE ORDER%0A%0A";
-
-
-      orderText +=
-        "Customer: " +
-        encodeURIComponent(name) +
-        "%0A";
-
-      orderText +=
-        "Phone: " +
-        encodeURIComponent(phone) +
-        "%0A";
-
-      if (email) {
-
-        orderText +=
-          "Email: " +
-          encodeURIComponent(email) +
-          "%0A";
-
-      }
-
-
-      orderText +=
-        "Address: " +
-        encodeURIComponent(address) +
-        "%0A%0A";
-
-
-      orderText +=
-        "ORDER DETAILS:%0A";
-
-
-      cart.forEach(item => {
-
-        orderText +=
-          encodeURIComponent(
-            item.name +
-            " × " +
-            item.quantity +
-            " = ₹" +
-            (item.price * item.quantity)
-          ) +
-          "%0A";
-
-      });
-
-
-      orderText +=
-        "%0ATotal: ₹" +
-        getCartTotal();
-
-
-      orderText +=
-        "%0APayment: " +
-        encodeURIComponent(payment);
-
-
-      /*
-        IMPORTANT:
-        Replace the number below with
-        YOUR BELORA WHATSAPP BUSINESS NUMBER.
-
-        Use country code without +.
-
-        Example:
-        919876543210
-      */
-
-      const whatsappNumber =
-        "919XXXXXXXXX";
-
-
-      if (
-        whatsappNumber.includes("X")
-      ) {
-
-        alert(
-          "Your website is ready!\\n\\n" +
-          "Before accepting orders, replace the WhatsApp number in the code with your Belora business WhatsApp number."
-        );
-
-        return;
-
-      }
-
-
-      const whatsappURL =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        orderText;
-
-
-      /*
-        Save order locally.
-      */
-
-      const order = {
-
-        orderId:
-          "BELORA-" +
-          Date.now(),
-
-        name,
-        phone,
-        email,
-        address,
-        payment,
-
-        items: cart,
-
-        total:
-          getCartTotal(),
-
-        createdAt:
-          new Date().toISOString()
-
-      };
-
-
-      localStorage.setItem(
-        "beloraLastOrder",
-        JSON.stringify(order)
-      );
-
-
-      /*
-        Open WhatsApp.
-      */
-
-      window.open(
-        whatsappURL,
-        "_blank"
-      );
-
-
-      showToast(
-        "Order details prepared ♡"
-      );
-
-    }
-
-
-    /*
-      ============================================
-      SEARCH
-      ============================================
-    */
-
-    function searchProducts() {
-
-      const query =
-        document.getElementById(
-          "searchInput"
-        ).value
-          .toLowerCase()
-          .trim();
-
-
-      const results =
-        products.filter(product =>
-          product.name
-            .toLowerCase()
-            .includes(query) ||
-          product.category
-            .toLowerCase()
-            .includes(query)
-        );
-
-
-      displayProducts(results);
-
-    }
-
-
-    function focusSearch() {
-
-      document
-        .getElementById("searchInput")
-        .focus();
-
-      document
-        .getElementById("shop")
-        .scrollIntoView();
-
-    }
-
-
-    /*
-      ============================================
-      CATEGORY FILTER
-      ============================================
-    */
-
-    function filterCategory(category) {
-
-      document
-        .getElementById("shop")
-        .scrollIntoView();
-
-
-      let results;
-
-
-      if (category === "Gift") {
-
-        results =
-          products.filter(
-            product =>
-              product.category === "Gift"
-          );
-
-      } else {
-
-        results =
-          products.filter(
-            product =>
-              product.category === category
-          );
-
-      }
-
-
-      displayProducts(results);
-
-    }
-
-
-    /*
-      ============================================
-      FAVORITE
-      ============================================
-    */
-
-    function favoriteProduct(id) {
-
-      const button =
-        event.currentTarget;
-
-      button.textContent = "♥";
-
-      showToast(
-        "Added to favourites ♡"
-      );
-
-    }
-
-
-    /*
-      ============================================
-      NEWSLETTER
-      ============================================
-    */
-
-    function subscribe() {
-
-      const input =
-        document.querySelector(
-          ".newsletter input"
-        );
-
-
-      if (!input.value) {
-
-        showToast(
-          "Please enter your email."
-        );
-
-        return;
-
-      }
-
-
-      showToast(
-        "Thank you for joining Belora ♡"
-      );
-
-      input.value = "";
-
-    }
-
-
-    /*
-      ============================================
-      TOAST
-      ============================================
-    */
-
-    function showToast(message) {
-
-      const toast =
-        document.getElementById("toast");
-
-      toast.textContent =
-        message;
-
-      toast.classList.add("show");
-
-
-      setTimeout(() => {
-
-        toast.classList.remove("show");
-
-      }, 2500);
-
-    }
-
-
-    /*
-      ============================================
-      INITIAL LOAD
-      ============================================
-    */
-
-    displayProducts();
-
-    updateCart();
-
-  </script>
+</script>
 
 </body>
 </html>
